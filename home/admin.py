@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import ProjectCategory, Project, Employee
+from .models import ProjectCategory, Project, Employee, Skill
 
 
 @admin.register(ProjectCategory)
@@ -37,3 +37,8 @@ class EmployeeAdmin(admin.ModelAdmin):
             return mark_safe(f"<img src='{obj.photo.url}' width=50 height=50>")
 
     photo_src_tag.short_description = 'Employee photo'
+
+@admin.register(Skill)
+class SkillAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'progress', 'is_visible', 'position')
+    list_editable = ('name', 'progress', 'is_visible', 'position')

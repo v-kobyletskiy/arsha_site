@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from .models import ProjectCategory, Project, Employee
+from .models import ProjectCategory, Project, Employee, Skill
 
 
 class MainPageView(TemplateView):
@@ -13,5 +13,6 @@ class MainPageView(TemplateView):
         context['categories'] = ProjectCategory.objects.filter(is_visible=True)
         context['projects'] = Project.objects.filter(is_visible=True)
         context['employees'] = Employee.objects.filter(is_visible=True)
+        context['skills'] = Skill.objects.filter(is_visible=True)
 
         return context

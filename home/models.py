@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class ProjectCategory(models.Model):
@@ -54,3 +55,17 @@ class Employee(models.Model):
         return f'{self.name} {self.surname}'
 
 
+class Skill(models.Model):
+    name = models.CharField(max_length=50)
+    progress = models.SmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
+    position = models.SmallIntegerField(unique=True)
+    is_visible = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('position',)
+        verbose_name_plural = 'Skills'
