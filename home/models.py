@@ -35,3 +35,22 @@ class Project(models.Model):
         #     models.UniqueConstraint(fields=['position', 'category'], name='unique_position_per_each_category')
         # ]
         unique_together = ('id', 'slug')
+
+
+class Employee(models.Model):
+    name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
+    appointment = models.CharField(max_length=50)
+    description = models.TextField(max_length=500, blank=True)
+    photo = models.ImageField(upload_to='employees/', blank=True)
+    position = models.SmallIntegerField(unique=True)
+    is_visible = models.BooleanField(default=True)
+    twitter_profile = models.URLField(blank=True)
+    facebook_profile = models.URLField(blank=True)
+    instagram_profile = models.URLField(blank=True)
+    linkedin_profile = models.URLField(blank=True)
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'
+
+
