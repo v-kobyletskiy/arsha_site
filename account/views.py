@@ -15,7 +15,10 @@ def logout_user(request):
 class LoginUserView(LoginView):
     form_class = LoginForm
     template_name = 'login.html'
-    success_url = '/'
+
+    def get_success_url(self):
+        return self.success_url
+
 
 class RegisterUserView(CreateView):
     form_class = RegisterForm
