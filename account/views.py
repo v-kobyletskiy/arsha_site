@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from .forms import RegisterForm, LoginForm
@@ -8,7 +8,7 @@ from django.urls import reverse, reverse_lazy
 
 def logout_user(request):
     logout(request)
-    return reverse_lazy('home:main_page')
+    return redirect('home:main_page')
 
 
 # Create your views here
@@ -17,7 +17,7 @@ class LoginUserView(LoginView):
     template_name = 'login.html'
 
     def get_success_url(self):
-        return self.success_url
+        return reverse_lazy('home:main_page')
 
 
 class RegisterUserView(CreateView):
