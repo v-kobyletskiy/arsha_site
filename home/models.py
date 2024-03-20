@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
@@ -69,3 +71,22 @@ class Skill(models.Model):
     class Meta:
         ordering = ('position',)
         verbose_name_plural = 'Skills'
+
+
+class Message(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
+    message = models.TextField()
+    is_processed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-created_at',)
+
+    def clean(self):
+        try:
+            validate_email(self.email)
+        except ValidationError as e:
+            raise ValidationError({'email': 'Invalid email'}) from e
