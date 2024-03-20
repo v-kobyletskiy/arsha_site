@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import ProjectCategory, Project, Employee, Skill, Message
+from .models import ProjectCategory, Project, Employee, Skill, Message, GeneralInfo
+
+admin.site.register(GeneralInfo)
 
 
 @admin.register(ProjectCategory)

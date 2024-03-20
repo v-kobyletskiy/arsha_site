@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
+from ckeditor.fields import RichTextField
 
 
 class ProjectCategory(models.Model):
@@ -90,3 +91,13 @@ class Message(models.Model):
             validate_email(self.email)
         except ValidationError as e:
             raise ValidationError({'email': 'Invalid email'}) from e
+
+
+class GeneralInfo(models.Model):
+    address = RichTextField()
+    phone = models.CharField(max_length=255)
+    email = models.EmailField()
+    twitter = models.URLField(max_length=255, blank=True)
+    facebook = models.URLField(max_length=255, blank=True)
+    instagram = models.URLField(max_length=255, blank=True)
+    linkedin = models.URLField(max_length=255, blank=True)
