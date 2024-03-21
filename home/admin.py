@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import ProjectCategory, Project, Employee, Skill, Message, GeneralInfo
+from .models import ProjectCategory, Project, Employee, Skill, Message, GeneralInfo, FrequentlyQuestion
 
 admin.site.register(GeneralInfo)
 
@@ -52,3 +52,10 @@ class MessageAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'subject', 'email', 'message', 'is_processed', 'created_at')
     list_editable = ('is_processed',)
     list_filter = ('created_at', )
+
+
+@admin.register(FrequentlyQuestion)
+class FrequentlyQuestionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'question', 'answer', 'position', 'is_visible')
+    list_editable = ('question', 'answer', 'position', 'is_visible')
+

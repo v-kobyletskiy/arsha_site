@@ -101,3 +101,10 @@ class GeneralInfo(models.Model):
     facebook = models.URLField(max_length=255, blank=True)
     instagram = models.URLField(max_length=255, blank=True)
     linkedin = models.URLField(max_length=255, blank=True)
+
+
+class FrequentlyQuestion(models.Model):
+    question = models.TextField()
+    answer = models.TextField()
+    position = models.SmallIntegerField(unique=True)
+    is_visible = models.BooleanField(default=True)
