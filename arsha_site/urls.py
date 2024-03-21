@@ -18,9 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from arsha_site import settings
+from account.views import LoginUserView, RegisterUserView, logout_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', LoginUserView.as_view(), name='login'),
+    path('register/', RegisterUserView.as_view(), name='register'),
+    path('logout/', logout_user, name='logout'),
 
     path('', include('home.urls')),
 ]
