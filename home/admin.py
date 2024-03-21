@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import ProjectCategory, Project, Employee, Skill, Message, GeneralInfo, FrequentlyQuestion
+from .models import ProjectCategory, Project, Employee, Skill, Message, GeneralInfo, FrequentlyQuestion, Service
 
 admin.site.register(GeneralInfo)
 
@@ -58,4 +58,10 @@ class MessageAdmin(admin.ModelAdmin):
 class FrequentlyQuestionAdmin(admin.ModelAdmin):
     list_display = ('id', 'question', 'answer', 'position', 'is_visible')
     list_editable = ('question', 'answer', 'position', 'is_visible')
+
+
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'description', 'position', 'is_visible')
+    list_editable = ('title', 'description', 'position', 'is_visible')
 

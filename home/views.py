@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from .models import ProjectCategory, Project, Employee, Skill, FrequentlyQuestion
+from .models import ProjectCategory, Project, Employee, Skill, FrequentlyQuestion, Service
 from .forms import MessageForm
 
 
@@ -18,6 +18,7 @@ class MainPageView(TemplateView):
         context['skills'] = Skill.objects.filter(is_visible=True)
         context['message_form'] = message_form
         context['frequently_questions'] = FrequentlyQuestion.objects.filter(is_visible=True)
+        context['services'] = Service.objects.filter(is_visible=True)
 
         return context
 

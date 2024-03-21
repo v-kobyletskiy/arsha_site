@@ -108,3 +108,10 @@ class FrequentlyQuestion(models.Model):
     answer = models.TextField()
     position = models.SmallIntegerField(unique=True)
     is_visible = models.BooleanField(default=True)
+
+
+class Service(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    position = models.SmallIntegerField(unique=True)
+    is_visible = models.BooleanField(default=True)
