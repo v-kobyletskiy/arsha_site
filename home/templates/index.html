@@ -1,15 +1,24 @@
 {% extends 'layouts/welcome.html' %}
 
 {% block content %}
-    {% include 'clients.html' %}
-    {% include 'about.html' %}
-    {% include 'why_us.html' %}
-    {% include 'skills.html' %}
-    {% include 'services.html' %}
-    {% include 'cta.html' %}
-    {% include 'portfolio.html' %}
-    {% include 'team.html' %}
-    {% include 'pricing.html' %}
-    {% include 'faq.html' %}
-    {% include 'contact.html' %}
+    {% include 'header.html' %}
+    {% include 'hero.html' %}
+
+    <main id="main">
+        {% include 'clients.html' %}
+        {% include 'about.html' %}
+        {% include 'why_us.html' %}
+        {% include 'skills.html' %}
+        {% include 'services.html' %}
+        {% include 'cta.html' %}
+        {% include 'portfolio.html' %}
+        {% include 'team.html' %}
+        {% include 'pricing.html' %}
+        {% include 'faq.html' %}
+        {% include 'contact.html' %}
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    {% include 'footer.html' %}
+    <!-- End Footer -->
 {% endblock %}
