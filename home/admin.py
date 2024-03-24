@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import ProjectCategory, Project, Employee, Skill, Message, GeneralInfo, FrequentlyQuestion, Service
+from .models import (ProjectCategory, Project, Employee, Skill, Message, GeneralInfo, FrequentlyQuestion, Service,
+                     Subscriber)
 
 admin.site.register(GeneralInfo)
 
@@ -65,3 +66,8 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'description', 'position', 'is_visible')
     list_editable = ('title', 'description', 'position', 'is_visible')
 
+
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ('id', 'email', 'is_active', 'username')
+    list_editable = ('email', 'is_active', 'username')

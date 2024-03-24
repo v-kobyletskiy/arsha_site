@@ -115,3 +115,10 @@ class Service(models.Model):
     description = models.TextField()
     position = models.SmallIntegerField(unique=True)
     is_visible = models.BooleanField(default=True)
+
+
+class Subscriber(models.Model):
+    email = models.EmailField()
+    is_active = models.BooleanField(default=True)
+    username = models.CharField(max_length=255)
+

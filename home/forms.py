@@ -1,5 +1,5 @@
 from django import forms
-from .models import Message
+from .models import Message, Subscriber
 
 
 class MessageForm(forms.ModelForm):
@@ -12,7 +12,21 @@ class MessageForm(forms.ModelForm):
             'subject': forms.TextInput(attrs={'class': 'form-control', 'id': 'subject'}),
             'message': forms.Textarea(attrs={'class': 'form-control', 'rows': '10'})
         }
-        name = forms.CharField(required=True)
-        email = forms.EmailField(required=True)
-        subject = forms.CharField(required=True)
-        message = forms.CharField(required=True)
+        required = {
+            'name': True,
+            'email': True,
+            'subject': True,
+            'message': True
+        }
+
+
+class SubscribeForm(forms.ModelForm):
+    class Meta:
+        model = Subscriber
+        fields = ('email',)
+        widgets = {
+            'email': forms.EmailInput()
+        },
+        required = {
+            'email': True,
+        }

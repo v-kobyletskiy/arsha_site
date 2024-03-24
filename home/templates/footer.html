@@ -6,9 +6,12 @@
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <p> Enter your email below and click 'Subscribe' to join our newsletter community</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              {% csrf_token %}
+              <input type="hidden" name="form_id" value="subscribeForm">
+              <input type="email" name="email">
+              <input type="submit" value="Subscribe">
             </form>
           </div>
         </div>
