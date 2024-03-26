@@ -23,6 +23,9 @@ class MainPageView(TemplateView):
         return context
 
     def post(self, request, *args, **kwargs):
+        """
+           Handles POST requests of message and subscribe forms.
+        """
         form_id = request.POST.get('form_id')
         if form_id == 'messageForm':
             return send_message(request)
@@ -31,6 +34,9 @@ class MainPageView(TemplateView):
 
 
 def send_message(request):
+    """
+       Process message form
+    """
     message_form = MessageForm(request.POST)
     if message_form.is_valid():
         message_form.save()
@@ -39,6 +45,9 @@ def send_message(request):
 
 
 def send_subscribe(request):
+    """
+       Process subscribe form
+    """
     subscribe_form = SubscribeForm(request.POST)
     if subscribe_form.is_valid():
         email = request.POST.get('email')
